@@ -868,9 +868,6 @@ class _ChatViewState extends State<ChatView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 70,
-        titleSpacing: 0,
-        leadingWidth: 56,
         leading: Container(
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
@@ -923,8 +920,10 @@ class _ChatViewState extends State<ChatView> {
           ),
         ),
         title: Container(
-          constraints: const BoxConstraints(maxWidth: 220),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * 0.6,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
             color: isDark ? const Color(0xFF1A1A2E) : Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -936,94 +935,93 @@ class _ChatViewState extends State<ChatView> {
               ),
             ],
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                radius: 14,
-                backgroundColor: azulVibrante,
-                child: const Icon(Icons.group, size: 14, color: Colors.white),
-              ),
-              const SizedBox(width: 8),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      widget.chatId,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: isDark ? Colors.white : const Color(0xFF1A1A2E),
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Flexible(
-                          child: StreamBuilder(
-                            stream: _firebaseService.recibirMensajes(
-                              widget.chatId,
-                            ),
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                final mensajesCount = snapshot.data!.length;
-                                return Text(
-                                  '$mensajesCount mensajes',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color:
-                                        isDark ? Colors.white60 : Colors.grey,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                );
-                              }
-                              return Text(
-                                'Cargando...',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: isDark ? Colors.white60 : Colors.grey,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 6),
-                        Container(
-                          width: 6,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color:
-                                _isConnected
-                                    ? verdeMenta
-                                    : const Color(0xFFFF6B6B),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+          child: IntrinsicWidth(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  radius: 16,
+                  backgroundColor: azulVibrante,
+                  child: const Icon(Icons.group, size: 16, color: Colors.white),
                 ),
-              ),
-            ],
+                const SizedBox(width: 12),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        widget.chatId,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : const Color(0xFF1A1A2E),
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      IntrinsicWidth(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Flexible(
+                              child: StreamBuilder(
+                                stream: _firebaseService.recibirMensajes(widget.chatId),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    final mensajesCount = snapshot.data!.length;
+                                    return Text(
+                                      '$mensajesCount mensajes',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: isDark ? Colors.white60 : Colors.grey,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    );
+                                  }
+                                  return Text(
+                                    'Cargando...',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: isDark ? Colors.white60 : Colors.grey,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  );
+                                },
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Container(
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: _isConnected 
+                                    ? verdeMenta 
+                                    : const Color(0xFFFF6B6B),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         actions: [
           Container(
-            margin: const EdgeInsets.only(right: 4),
-            constraints: const BoxConstraints(maxWidth: 120),
+            margin: const EdgeInsets.only(right: 8),
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF1A1A2E) : Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
                   color: isDark ? Colors.black26 : Colors.grey.withOpacity(0.1),
-                  blurRadius: 6,
+                  blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
               ],
@@ -1035,16 +1033,13 @@ class _ChatViewState extends State<ChatView> {
                 IconButton(
                   icon: Icon(
                     _isConnected ? Icons.wifi : Icons.wifi_off,
-                    color: _isConnected ? verdeMenta : const Color(0xFFFF6B6B),
-                    size: 16,
+                    color: _isConnected 
+                        ? verdeMenta 
+                        : const Color(0xFFFF6B6B),
+                    size: 20,
                   ),
                   onPressed: _toggleConnection,
                   tooltip: _isConnected ? 'Desconectar' : 'Conectar',
-                  constraints: const BoxConstraints(
-                    minWidth: 28,
-                    minHeight: 28,
-                  ),
-                  padding: const EdgeInsets.all(2),
                 ),
                 Consumer<ThemeManager>(
                   builder: (context, themeManager, child) {
@@ -1054,7 +1049,7 @@ class _ChatViewState extends State<ChatView> {
                             ? Icons.dark_mode
                             : Icons.light_mode,
                         color: isDark ? Colors.white : const Color(0xFF1A1A2E),
-                        size: 16,
+                        size: 20,
                       ),
                       onPressed: () async {
                         await themeManager.toggleTheme();
@@ -1063,11 +1058,6 @@ class _ChatViewState extends State<ChatView> {
                           themeManager.isDarkMode
                               ? 'Modo Claro'
                               : 'Modo Oscuro',
-                      constraints: const BoxConstraints(
-                        minWidth: 28,
-                        minHeight: 28,
-                      ),
-                      padding: const EdgeInsets.all(2),
                     );
                   },
                 ),
@@ -1075,15 +1065,10 @@ class _ChatViewState extends State<ChatView> {
                   icon: Icon(
                     Icons.more_vert,
                     color: isDark ? Colors.white : const Color(0xFF1A1A2E),
-                    size: 16,
+                    size: 20,
                   ),
                   onPressed: _mostrarAyuda,
                   tooltip: 'Opciones',
-                  constraints: const BoxConstraints(
-                    minWidth: 28,
-                    minHeight: 28,
-                  ),
-                  padding: const EdgeInsets.all(2),
                 ),
               ],
             ),
