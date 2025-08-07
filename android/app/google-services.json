@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "342978296530",
+    "firebase_url": "https://chat-24aef-default-rtdb.firebaseio.com",
+    "project_id": "chat-24aef",
+    "storage_bucket": "chat-24aef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342978296530:android:ec9d51c050f61b1eea4b0b",
+        "android_client_info": {
+          "package_name": "com.example.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLEX933hiZKjMIFpuiLfw3Km1xz81xffA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342978296530:android:02d5e15b2ca27458ea4b0b",
+        "android_client_info": {
+          "package_name": "com.example.pry_db_realtime_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLEX933hiZKjMIFpuiLfw3Km1xz81xffA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

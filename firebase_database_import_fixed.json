@@ -1,0 +1,82 @@
+{
+  "messages": {
+    "canal_general": {
+      "NqF1a2b3c4d5e6f7g8h": {
+        "autor": "Admin",
+        "texto": "¡Bienvenidos al chat! 👋",
+        "timestamp": 1703160000000,
+        "editado": false
+      },
+      "NqF1b2c3d4e5f6g7h8i": {
+        "autor": "Usuario Demo",
+        "texto": "Hola a todos, ¿cómo están?",
+        "timestamp": 1703160060000,
+        "editado": false
+      },
+      "NqF1c2d3e4f5g6h7i8j": {
+        "autor": "María",
+        "texto": "¡Muy bien! Me encanta esta app de chat 😊",
+        "timestamp": 1703160120000,
+        "editado": false
+      },
+      "NqF1d2e3f4g5h6i7j8k": {
+        "autor": "Carlos",
+        "texto": "¿Alguien sabe si se pueden editar los mensajes?",
+        "timestamp": 1703160180000,
+        "editado": false
+      },
+      "NqF1e2f3g4h5i6j7k8l": {
+        "autor": "Admin",
+        "texto": "¡Sí! Mantén presionado tu mensaje para editarlo ✏️",
+        "timestamp": 1703160240000,
+        "editado": true
+      },
+      "NqF1f2g3h4i5j6k7l8m": {
+        "autor": "Ana",
+        "texto": "También puedes deslizar hacia la izquierda para eliminar",
+        "timestamp": 1703160300000,
+        "editado": false
+      },
+      "NqF1g2h3i4j5k6l7m8n": {
+        "autor": "Luis",
+        "texto": "¿Y el modo oscuro funciona bien?",
+        "timestamp": 1703160360000,
+        "editado": false
+      },
+      "NqF1h2i3j4k5l6m7n8o": {
+        "autor": "María",
+        "texto": "¡Perfecto! Prueba el botón de luna/sol en la parte superior",
+        "timestamp": 1703160420000,
+        "editado": false
+      },
+      "NqF1i2j3k4l5m6n7o8p": {
+        "autor": "Usuario Demo",
+        "texto": "Me gusta mucho el diseño moderno 🎨",
+        "timestamp": 1703160480000,
+        "editado": false
+      },
+      "NqF1j2k3l4m5n6o7p8q": {
+        "autor": "Carlos",
+        "texto": "Las estadísticas en tiempo real están geniales",
+        "timestamp": 1703160540000,
+        "editado": false
+      }
+    }
+  },
+  "typing_status": {
+    "canal_general": {
+      "placeholder": "Los usuarios aparecerán aquí automáticamente cuando estén escribiendo"
+    }
+  },
+  "chat_rooms": {
+    "canal_general": {
+      "name": "Canal General",
+      "description": "Sala de chat principal para todos los usuarios",
+      "created": 1703159000000,
+      "active": true
+    }
+  },
+  "user_presence": {
+    "placeholder": "Estado de presencia de usuarios online y offline"
+  }
+}
